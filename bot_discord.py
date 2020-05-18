@@ -1,11 +1,15 @@
 #! /usr/bin/env python3
 """Discord bot based the Arthur Character"""
-import os
 from random import randint
 import json
 import discord
 from discord.ext import commands
-from secret import TOKEN
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+TOKEN = os.getenv("TOKEN")
 
 client = commands.Bot(command_prefix="!", description="Liste des commandes disponibles, utilise le préfixe '!' devant la commande")
 
