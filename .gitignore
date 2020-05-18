@@ -1,4 +1,4 @@
-.secret.py
-.secret
 .venv
 .env
+__pycache__
+data.json
