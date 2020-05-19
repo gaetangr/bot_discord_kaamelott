@@ -63,4 +63,12 @@ async def merde(ctx):
     """Display a gif for the command 'merde'"""
     await ctx.send("https://giphy.com/gifs/kaamelott-GSAyeyIkEs6Z2")
 
+
+@client.command(help="Ferme là")
+async def chut(ctx):
+    """Shut up!"""
+    await ctx.send("CiaCiaCiao !!")
+    await client.close()
+
+
 client.run(TOKEN)
