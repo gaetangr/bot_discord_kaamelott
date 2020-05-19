@@ -12,7 +12,9 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
-client = commands.Bot(command_prefix="!", description="Liste des commandes disponibles, utilise le préfixe '!' devant la commande")
+DESCRIPTION = "Liste des commandes disponibles, utilise le préfixe '!' devant la commande"
+client = commands.Bot(command_prefix="!", description=DESCRIPTION)
+
 
 @client.event
 async def on_ready():
@@ -23,7 +25,8 @@ async def on_ready():
 
 @client.command(help="755 citations de Kaameloot en une seule commande")
 async def quote(ctx):
-    with open("data.json") as json_file:
+    with open("data.json") as f:
+        json_file = f.read()
         data = json.loads(json_file)
         quote_id = choice(range(len(data)))
         quote_text = data[f"{quote_id}"]["citation"]
