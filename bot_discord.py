@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """Discord bot based the Arthur Character"""
-from random import randint
+from random import choice
 import json
 import os
 
@@ -23,14 +23,13 @@ async def on_ready():
 
 @client.command(help="755 citations de Kaameloot en une seule commande")
 async def quote(ctx):
-    with open("data.json") as f:
-        f = f.read()
-        data = json.loads(f)
-        quote_id = randint(0, 755)
-        quote = data[f"{quote_id}"]["citation"]
+    with open("data.json") as json_file:
+        data = json.loads(json_file)
+        quote_id = choice(range(len(data)))
+        quote_text = data[f"{quote_id}"]["citation"]
         personnage = data[f"{quote_id}"]["infos"]["personnage"]
         episode = data[f"{quote_id}"]["infos"]["episode"]
-        discord_quote = f"__**{personnage}**__ : {quote} - *Episode : {episode}*"
+        discord_quote = f"__**{personnage}**__ : {quote_text} - *Episode : {episode}*"
         await ctx.send(discord_quote)
 
 @client.command(help="Quand c'est pas faux")
