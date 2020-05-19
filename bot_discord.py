@@ -3,11 +3,10 @@
 from random import choice
 import json
 import os
+from random import randint
 
-import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
@@ -54,7 +53,6 @@ async def quote(ctx):
 
 @client.command(help="Quand c'est pas faux")
 async def faux(ctx):
-    """Display a gif for the command 'faux'"""
     await ctx.send("https://tenor.com/view/kaa-kaamelott-pas-faux-perceval-gif-8896787")
 
 
