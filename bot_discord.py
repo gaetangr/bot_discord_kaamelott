@@ -2,9 +2,10 @@
 """Discord bot based the Arthur Character"""
 from random import randint
 import json
+import os
+
 import discord
 from discord.ext import commands
-import os
 from dotenv import load_dotenv
 
 
@@ -16,9 +17,9 @@ client = commands.Bot(command_prefix="!", description="Liste des commandes dispo
 @client.event
 async def on_ready():
     print('{0.user} est en ligne'.format(client))
-    channel = client.get_channel(686237845937192999)
+    channel = client.get_channel(700716211180404769)
     await channel.send('**{0.user} est en ligne** https://tenor.com/view/kaamelott-gif-5330988'.format(client))
-    await channel.send('Le roi Arthur vient de se connecter, tape "!help" pour en savoir plus')
+    await channel.send('Le roi Arthur vient de se connecter, tape "!help" pour en savoir plus, Coucou Guillaume !')
 
 @client.command(help="755 citations de Kaameloot en une seule commande")
 async def quote(ctx):
