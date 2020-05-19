@@ -1,25 +1,34 @@
 #! /usr/bin/env python3
-"""Discord bot based the Arthur Character"""
-from random import randint
+"""Discord bot based the Arthur Character."""
 import json
 import os
+from random import randint
 
-import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-
 
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
-client = commands.Bot(command_prefix="!", description="Liste des commandes disponibles, utilise le préfixe '!' devant la commande")
+client = commands.Bot(
+    command_prefix="!",
+    description="Liste des commandes disponibles, utilise le préfixe '!' devant la commande",
+)
+
 
 @client.event
 async def on_ready():
     print('{0.user} est en ligne'.format(client))
     channel = client.get_channel(700716211180404769)
-    await channel.send('**{0.user} est en ligne** https://tenor.com/view/kaamelott-gif-5330988'.format(client))
-    await channel.send('Le roi Arthur vient de se connecter, tape "!help" pour en savoir plus, Coucou Guillaume !')
+    await channel.send(
+        '**{0.user} est en ligne** https://tenor.com/view/kaamelott-gif-5330988'.format(
+            client
+        )
+    )
+    await channel.send(
+        'Le roi Arthur vient de se connecter, tape "!help" pour en savoir plus, Coucou Guillaume !'
+    )
+
 
 @client.command(help="755 citations de Kaameloot en une seule commande")
 async def quote(ctx):
@@ -33,12 +42,17 @@ async def quote(ctx):
         discord_quote = f"{personnage} :{quote} - Episode :{episode}"
         await ctx.send(discord_quote)
 
+
 @client.command(help="Quand c'est pas faux")
 async def faux(ctx):
-    await ctx.send("https://tenor.com/view/kaa-kaamelott-pas-faux-perceval-gif-8896787")
+    await ctx.send(
+        "https://tenor.com/view/kaa-kaamelott-pas-faux-perceval-gif-8896787"
+    )
+
 
 @client.command(help="Quand c'est de la merdeeee !")
 async def merde(ctx):
     await ctx.send("https://giphy.com/gifs/kaamelott-GSAyeyIkEs6Z2")
+
 
 client.run(TOKEN)
