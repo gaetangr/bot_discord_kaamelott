@@ -18,6 +18,7 @@ client = commands.Bot(command_prefix="!", description=DESCRIPTION)
 
 @client.event
 async def on_ready():
+    """Display hello on start"""
     print("{0.user} est en ligne".format(client))
     channel = client.get_channel(700716211180404769)
     await channel.send(
@@ -32,6 +33,7 @@ async def on_ready():
 
 @client.command(help="755 citations de Kaameloot en une seule commande")
 async def quote(ctx):
+    """Display quote"""
     with open("data.json") as f:
         json_file = f.read()
         data = json.loads(json_file)
