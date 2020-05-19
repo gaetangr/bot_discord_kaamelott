@@ -29,7 +29,7 @@ async def quote(ctx):
         quote = data[f"{quote_id}"]["citation"]
         personnage = data[f"{quote_id}"]["infos"]["personnage"]
         episode = data[f"{quote_id}"]["infos"]["episode"]
-        discord_quote = f"{personnage} :{quote} - Episode :{episode}"
+        discord_quote = f"__**{personnage}**__ : {quote} - *Episode : {episode}*"
         await ctx.send(discord_quote)
 
 @client.command(help="Quand c'est pas faux")
