@@ -32,7 +32,14 @@ async def quote(ctx):
         quote_text = data[f"{quote_id}"]["citation"]
         personnage = data[f"{quote_id}"]["infos"]["personnage"]
         episode = data[f"{quote_id}"]["infos"]["episode"]
-        discord_quote = f"__**{personnage}**__ : {quote_text} - *Episode : {episode}*"
+        if ":" in episode:
+            discord_quote = (
+                f"__**{personnage}**__ : {quote_text} - *Episode {episode.strip()}*"
+            )
+        else:
+            discord_quote = (
+                f"__**{personnage}**__ : {quote_text} - *Episode : {episode.strip()}*"
+            )
         await ctx.send(discord_quote)
 
 @client.command(help="Quand c'est pas faux")
